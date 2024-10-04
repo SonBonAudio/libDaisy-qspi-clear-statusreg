@@ -64,19 +64,19 @@
   */
 
 // BOTH
-#define USBD_VID 1155
+#define USBD_VID  0x16D0        // 1155
 #define USBD_LANGID_STRING 1033
-#define USBD_MANUFACTURER_STRING "Electrosmith"
+#define USBD_MANUFACTURER_STRING  "Cantux Research LLC" //  "Electrosmith"
 // HS
-#define USBD_PID_HS 22336 // replace with our PID when we have one.
-#define USBD_PRODUCT_STRING_HS "Daisy Seed External"
-#define USBD_CONFIGURATION_STRING_HS "CDC Config"
-#define USBD_INTERFACE_STRING_HS "CDC Interface"
+#define USBD_PID_HS 0x0CE4    //  22336 // replace with our PID when we have one.
+#define USBD_PRODUCT_STRING_HS  "eCorder Y Series" // "Daisy Seed External"
+#define USBD_CONFIGURATION_STRING_HS "MIDI Config" // "CDC Config"
+#define USBD_INTERFACE_STRING_HS "MIDI Config" // "CDC Interface"
 // FS
-#define USBD_PID_FS 22336 // replace with our PID when we have one.
-#define USBD_PRODUCT_STRING_FS "Daisy Seed Built In"
-#define USBD_CONFIGURATION_STRING_FS "CDC Config"
-#define USBD_INTERFACE_STRING_FS "CDC Interface"
+#define USBD_PID_FS 0x0CE4    // 22336 // replace with our PID when we have one.
+#define USBD_PRODUCT_STRING_FS  "eCorder Y Series" // "Daisy Seed Built In"
+#define USBD_CONFIGURATION_STRING_FS "MIDI Config" //"CDC Config"
+#define USBD_INTERFACE_STRING_FS "MIDI Config" //"CDC Interface"
 
 // Previous defines.
 //#define USBD_VID 1155
@@ -171,7 +171,7 @@ USBD_DescriptorsTypeDef FS_Desc = {USBD_FS_DeviceDescriptor,
 #pragma data_alignment = 4
 #endif /* defined ( __ICCARM__ ) */
 /** USB standard device descriptor. */
-__ALIGN_BEGIN uint8_t USBD_FS_DeviceDesc[USB_LEN_DEV_DESC] __ALIGN_END = {
+__weak __ALIGN_BEGIN uint8_t USBD_FS_DeviceDesc[USB_LEN_DEV_DESC] __ALIGN_END = {
     0x12,                 /*bLength */
     USB_DESC_TYPE_DEVICE, /*bDescriptorType*/
     0x00,                 /*bcdUSB */
@@ -240,7 +240,7 @@ USBD_DescriptorsTypeDef HS_Desc = {USBD_HS_DeviceDescriptor,
 #pragma data_alignment = 4
 #endif /* defined ( __ICCARM__ ) */
 /** USB standard device descriptor. */
-__ALIGN_BEGIN uint8_t USBD_HS_DeviceDesc[USB_LEN_DEV_DESC] __ALIGN_END = {
+__weak __ALIGN_BEGIN uint8_t USBD_HS_DeviceDesc[USB_LEN_DEV_DESC] __ALIGN_END = {
     0x12,                 /*bLength */
     USB_DESC_TYPE_DEVICE, /*bDescriptorType*/
     0x00,                 /*bcdUSB */
