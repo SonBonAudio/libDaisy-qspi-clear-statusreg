@@ -555,6 +555,20 @@ void System::ConfigureMpu()
     MPU_InitStruct.BaseAddress  = 0x38800000;
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
+    // Configure the ITCM section as full access
+    MPU_InitStruct.Enable = MPU_REGION_ENABLE;
+    MPU_InitStruct.Number = MPU_REGION_NUMBER3;  // Choose an appropriate region number
+    MPU_InitStruct.BaseAddress = 0x00000000;  // ITCM base address
+    MPU_InitStruct.Size = MPU_REGION_SIZE_64KB;  // Adjust size as needed
+    MPU_InitStruct.SubRegionDisable = 0x00;
+    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
+    MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
+    MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
+    MPU_InitStruct.IsShareable = MPU_ACCESS_NOT_SHAREABLE;
+    MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE;
+    MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
+    HAL_MPU_ConfigRegion(&MPU_InitStruct);
+
     HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
 }
 
