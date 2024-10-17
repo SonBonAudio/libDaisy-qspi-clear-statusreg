@@ -91,6 +91,7 @@ class System
             v6_1,        // v6.1 or greater
             LAST
         } version;
+        uint32_t dummy_word_for_ECC_workaround;  // write to this after doing any writes, before calling NVIC_SystemReset
     };
 
     System() {}
